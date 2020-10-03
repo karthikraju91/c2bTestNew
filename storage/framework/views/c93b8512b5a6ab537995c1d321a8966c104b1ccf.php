@@ -1,0 +1,68 @@
+<footer class="footer text-center">
+                All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="<?php echo e(asset('assets/libs/jquery/dist/jquery.min.js')); ?>"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="<?php echo e(asset('assets/libs/popper.js/dist/umd/popper.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/extra-libs/sparkline/sparkline.js')); ?>"></script>
+    <!--Wave Effects -->
+    <script src="<?php echo e(asset('dist/js/waves.js')); ?>"></script>
+    <!--Menu sidebar -->
+    <script src="<?php echo e(asset('dist/js/sidebarmenu.js')); ?>"></script>
+    <!--Custom JavaScript -->
+    <script src="<?php echo e(asset('dist/js/custom.min.js')); ?>"></script>
+    <!--This page JavaScript -->
+    <!-- <script src="../../dist/js/pages/dashboards/dashboard1.js"></script> -->
+    <!-- Charts js Files -->
+    <script src="<?php echo e(asset('assets/libs/flot/excanvas.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/libs/flot/jquery.flot.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/libs/flot/jquery.flot.pie.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/libs/flot/jquery.flot.time.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/libs/flot/jquery.flot.stack.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/libs/flot/jquery.flot.crosshair.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('dist/js/pages/chart/chart-page-init.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/extra-libs/DataTables/datatables.min.js')); ?>"></script>
+	<script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+		
+		
+	function cityList(){
+	var sid = $("#state").val();
+	var data = {'sid':sid,"_token":"<?php echo e(csrf_token()); ?>"};
+	$("#city").empty();
+	$.post("<?php echo e(asset('customer/city_list')); ?>",data,function(response){
+		var opt = '<option value=""> Select City</option>';
+		$.each(response.data,function(k,v){
+			opt +="<option value="+v.id+">"+v.name+"</option>";
+		});
+		$("#city").html(opt);
+	});
+}
+
+$(document).ready(function(){
+	
+	cityList();
+	
+});	
+		
+    </script>
+	
+
+</body>
+
+</html><?php /**PATH D:\xampp\htdocs\c2bTest\resources\views/layouts/footer.blade.php ENDPATH**/ ?>
